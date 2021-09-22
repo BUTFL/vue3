@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"/>
+    <link href="/favicon.ico" rel="icon"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>首页</title>
+</head>
+<body>
+<div id="app" sty></div>
+<script src="/src/main.js" type="module"></script>
+</body>
+</html>
+
+<script>
+    import {defineComponent} from 'vue'
+    import {NConfigProvider, NInput, NDatePicker, NSpace} from 'naive-ui'
+    import {createTheme, inputDark, datePickerDark} from 'naive-ui'
+    import {zhCN, dateZhCN} from 'naive-ui'
+
+    export default defineComponent({
+        components: {
+            NConfigProvider,
+            NInput,
+            NDatePicker,
+            NSpace
+        },
+        setup() {
+            return {
+                darkTheme: createTheme([inputDark, datePickerDark]),
+                zhCN,
+                dateZhCN
+            }
+        }
+    })
+</script>
+
+<template>
+    <n-config-provider :date-locale="dateZhCN" :locale="zhCN" :theme="darkTheme">
+        <n-space vertical>
+            <n-input/>
+            <n-date-picker/>
+        </n-space>
+    </n-config-provider>
+</template>
+
+<style>
+    body {
+        margin: 0px;
+        padding: 0px;
+        list-style: none;
+    }
+</style>
